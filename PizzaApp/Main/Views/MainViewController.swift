@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 
@@ -63,7 +64,15 @@ extension MainViewController: UITableViewDataSource {
 
         return cell
     }
-    
+}
 
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let selectedPizza = dataArray[indexPath.row]
+        let detailVC = DetailViewController()
+        detailVC.pizza = selectedPizza
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 

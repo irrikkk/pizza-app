@@ -7,3 +7,9 @@ struct MainData {
     let price: String
 }
 
+struct IngredientsData {
+    let image: UIImage?
+    let text: String
+    let price: String
+}
+
